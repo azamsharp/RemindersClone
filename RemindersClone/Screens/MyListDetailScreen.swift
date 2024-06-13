@@ -11,6 +11,8 @@ import SwiftData
 struct MyListDetailScreen: View {
     
     let myList: MyList
+    @Query private var reminders: [Reminder]
+    
     @State private var title: String = ""
     @State private var isNewReminderPresented: Bool = false
     
@@ -19,13 +21,27 @@ struct MyListDetailScreen: View {
      
     @Environment(\.modelContext) private var context
      
+    init(myList: MyList) {
+        
+        self.myList = myList
+        
+        let listId = myList.persistentModelID
+        
+        let predicate = #Predicate<Reminder> { reminder in
+            reminder.list?.persistentModelID == listId
+            && !reminder.isCompleted
+        }
+        
+        _reminders = Query(filter: predicate)
+    }
+    
     private var isFormValid: Bool {
         !title.isEmptyOrWhitespace
     }
     
     private func saveReminder() {
         let reminder = Reminder(title: title)
-        myList.reminders.append(reminder)
+        myList.reminders?.append(reminder)
     }
     
     private func isReminderSelected(_ reminder: Reminder) -> Bool {
@@ -34,14 +50,15 @@ struct MyListDetailScreen: View {
     
     private func deleteReminder(_ indexSet: IndexSet) {
         guard let index = indexSet.last else { return }
-        let reminder = myList.reminders[index]
+        guard let reminder = myList.reminders?[index] else { return }
+        
         context.delete(reminder)
     }
     
     var body: some View {
         VStack {
               
-            ReminderListView(reminders: myList.reminders.filter { !$0.isCompleted })
+            ReminderListView(reminders: reminders)
             
             Spacer()
             Button(action: {

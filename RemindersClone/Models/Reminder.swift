@@ -11,9 +11,9 @@ import SwiftData
 @Model
 class Reminder {
     
-    var title: String
+    var title: String = ""
     var notes: String?
-    var isCompleted: Bool
+    var isCompleted: Bool = false
     var reminderDate: Date?
     var reminderTime: Date?
     

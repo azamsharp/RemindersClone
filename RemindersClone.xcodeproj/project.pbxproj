@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D114F342C1A1B700042037A /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D114F332C1A1B700042037A /* NotificationManager.swift */; };
 		8D3114FB2BD6A793001E4D99 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3114FA2BD6A793001E4D99 /* Reminder.swift */; };
 		8D3114FD2BD6A8FC001E4D99 /* MyListDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3114FC2BD6A8FC001E4D99 /* MyListDetailScreen.swift */; };
 		8D3114FF2BD6AD68001E4D99 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3114FE2BD6AD68001E4D99 /* String+Extensions.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D114F332C1A1B700042037A /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		8D3114FA2BD6A793001E4D99 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		8D3114FC2BD6A8FC001E4D99 /* MyListDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListDetailScreen.swift; sourceTree = "<group>"; };
 		8D3114FE2BD6AD68001E4D99 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		8DA1EA4D2C0B529B0052FDA9 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		8DA1EA502C0B55F20052FDA9 /* Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delay.swift; sourceTree = "<group>"; };
 		8DCE70F92C060C77002FFB08 /* ReminderCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderCellView.swift; sourceTree = "<group>"; };
+		8DEB29D92C1B648E00D04E7F /* RemindersClone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemindersClone.entitlements; sourceTree = "<group>"; };
+		8DEB29DA2C1B64F000D04E7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D114F322C1A1B600042037A /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				8D114F332C1A1B700042037A /* NotificationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		8D51DF112BD4884100FAC8BD = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +93,9 @@
 		8D51DF1C2BD4884100FAC8BD /* RemindersClone */ = {
 			isa = PBXGroup;
 			children = (
+				8DEB29DA2C1B64F000D04E7F /* Info.plist */,
+				8DEB29D92C1B648E00D04E7F /* RemindersClone.entitlements */,
+				8D114F322C1A1B600042037A /* Managers */,
 				8DA1EA4F2C0B55E60052FDA9 /* Utils */,
 				8D51DF382BD4902200FAC8BD /* Extensions */,
 				8D51DF332BD48E3300FAC8BD /* Models */,
@@ -234,6 +249,7 @@
 				8DCE70FA2C060C77002FFB08 /* ReminderCellView.swift in Sources */,
 				8D51DF322BD48BCD00FAC8BD /* ColorPickerView.swift in Sources */,
 				8D4962EE2C135735009FB5C4 /* MyListCellView.swift in Sources */,
+				8D114F342C1A1B700042037A /* NotificationManager.swift in Sources */,
 				8D51DF372BD48ECF00FAC8BD /* PreviewContainer.swift in Sources */,
 				8D3114FD2BD6A8FC001E4D99 /* MyListDetailScreen.swift in Sources */,
 				8DA1EA512C0B55F20052FDA9 /* Delay.swift in Sources */,
@@ -369,17 +385,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RemindersClone/RemindersClone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RemindersClone/Preview Content\"";
 				DEVELOPMENT_TEAM = B2Q8EGNCQA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RemindersClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -398,17 +417,20 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RemindersClone/RemindersClone.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RemindersClone/Preview Content\"";
 				DEVELOPMENT_TEAM = B2Q8EGNCQA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = RemindersClone/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

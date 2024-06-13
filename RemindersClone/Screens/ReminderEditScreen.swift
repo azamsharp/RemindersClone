@@ -27,6 +27,9 @@ struct ReminderEditScreen: View {
         reminder.notes = notes.isEmpty ? nil: notes
         reminder.reminderDate = showCalender ? reminderDate: nil
         reminder.reminderTime = showTime ? reminderTime: nil
+        
+        // schedule a local notification
+        NotificationManager.scheduleNotification(userData: UserData(title: reminder.title, body: reminder.notes, date: reminder.reminderDate, time: reminder.reminderTime))
     }
     
     private var isFormValid: Bool {

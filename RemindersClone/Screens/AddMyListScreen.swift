@@ -35,7 +35,7 @@ struct AddMyListScreen: View {
                 color = Color(hex: myList.colorCode)
             }
         })
-        .navigationTitle("New List")
+        .navigationTitle(myList == nil ? "New List": "Edit List")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
