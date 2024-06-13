@@ -36,6 +36,8 @@ enum ReminderStatsType: Int, Identifiable {
 
 struct MyListsScreen: View {
     
+    @Environment(\.modelContext) private var context
+    
     @Query private var myLists: [MyList]
     @State private var isPresented: Bool = false
     @State private var selectedList: MyList?
@@ -96,6 +98,15 @@ struct MyListsScreen: View {
         }
     }
     
+    private func deleteList(indexSet: IndexSet) {
+        
+        guard let index = indexSet.first else { return }
+        let myList = myLists[index]
+        
+        // delete it
+        context.delete(myList)
+    }
+    
     var body: some View {
         List {
             
@@ -134,8 +145,7 @@ struct MyListsScreen: View {
                             actionSheet = .editList(myList)
                         }
                 }
-               
-            }
+            }.onDelete(perform: deleteList)
             
             Button(action: {
                 actionSheet = .newList
