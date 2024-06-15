@@ -46,6 +46,9 @@ struct MyListsScreen: View {
     @Query private var reminders: [Reminder]
     @State private var reminderStatsType: ReminderStatsType?
     
+    @State private var search: String = ""
+    @Environment(\.colorScheme) private var colorScheme
+    
     enum MyListScreenSheets: Identifiable {
         
         case newList
@@ -83,6 +86,13 @@ struct MyListsScreen: View {
     
     private var completedReminders: [Reminder] {
         reminders.filter { $0.isCompleted }
+    }
+    
+    private var searchResults: [Reminder] {
+        reminders.filter {
+            $0.title.lowercased().contains(search.lowercased()) &&
+            !$0.isCompleted
+        }
     }
     
     private func reminders(for type: ReminderStatsType) -> [Reminder] {
@@ -156,6 +166,14 @@ struct MyListsScreen: View {
             }).listRowSeparator(.hidden)
             
         }
+        .searchable(text: $search)
+        .overlay(alignment: .center, content: {
+            if !search.isEmpty {
+                ReminderListView(reminders: searchResults)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(colorScheme == .dark ? .black: .white)
+            }
+        })
         .navigationTitle("My Lists")
         .navigationDestination(item: $selectedList, destination: { myList in
             MyListDetailScreen(myList: myList)
